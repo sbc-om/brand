@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBC · Brand Book & Assets</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0098EA;
+            --dark: #0B0B0F;
+            --gray: #6C7482;
+            --light: #F3F5F8;
+            --white: #FFFFFF;
+            --border: #E2E6ED;
+            --radius: 16px;
+            --shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+
+        * { box-sizing: border-box; outline: none; }
+        
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--white);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 4rem;
+        }
+
+        /* Sidebar */
+        aside {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            padding: 3rem 0;
+            overflow-y: auto;
+            border-right: 1px solid var(--border);
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        nav a {
+            display: block;
+            padding: 0.75rem 0;
+            color: var(--gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 0 6rem;
+        }
+
+        section {
+            margin-bottom: 6rem;
+            scroll-margin-top: 4rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            letter-spacing: -0.03em;
+            margin: 0 0 1.5rem;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: 2rem;
+            letter-spacing: -0.02em;
+            margin: 0 0 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin: 2rem 0 1rem;
+        }
+
+        p {
+            color: var(--gray);
+            max-width: 700px;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Asset Grid */
+        .asset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .asset-card {
+            background: var(--light);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .asset-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+            border-color: var(--border);
+            background: var(--white);
+        }
+
+        .asset-preview {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+
+        .asset-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .asset-info {
+            width: 100%;
+        }
+
+        .asset-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .asset-meta {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.6rem;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-download:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Color Palette */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .color-swatch {
+            height: 160px;
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        /* Typography */
+        .type-sample {
+            padding: 2rem;
+            background: var(--light);
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+        }
+
+        .type-sample h1 { font-size: 2.5rem; margin: 0; }
+        .type-sample p { margin: 0.5rem 0 0; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            aside {
+                height: auto;
+                position: relative;
+                padding: 2rem 0;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+            nav {
+                display: flex;
+                gap: 1.5rem;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+            }
+            nav a {
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <aside>
+        <div class="brand-logo">
+            <img src="assets/LOGO.svg" alt="SBC Logo">
+            <span>SBC Brand</span>
+        </div>
+        <nav>
+            <a href="#intro">Introduction</a>
+            <a href="#logos">Logos</a>
+            <a href="#colors">Colors</a>
+            <a href="#typography">Typography</a>
+            <a href="#ios">iOS Icons</a>
+            <a href="#android">Android Icons</a>
+            <a href="#web">Web Icons</a>
+            <a href="#social">Social Media</a>
+            <a href="#favicons">Favicons</a>
+        </nav>
+    </aside>
+
+    <main>
+        <section id="intro">
+            <h1>SBC Brand System</h1>
+            <p>The definitive guide to the SBC visual identity. This system ensures consistency across all digital and physical touchpoints, reflecting our commitment to innovation and clarity.</p>
+            <div style="margin-top: 2rem;">
+                <a href="assets/LOGO.svg" download class="btn-download" style="width: auto; padding: 0.8rem 1.5rem; background: var(--primary); color: white; border: none;">Download Master Logo (SVG)</a>
+            </div>
+        </section>
+
+        <section id="logos">
+            <h2>Master Logos</h2>
+            <p>Our primary marks in vector and high-resolution raster formats.</p>
+            <div class="asset-grid">
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/LOGO.svg" alt="Vector Logo"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">Master Vector</div>
+                        <div class="asset-meta">SVG · Infinite Scale</div>
+                        <a href="assets/LOGO.svg" download class="btn-download">Download SVG</a>
+                    </div>
+                </div>
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/LOGO (1024).png" alt="PNG Logo"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">High-Res PNG</div>
+                        <div class="asset-meta">1024 x 1024 px</div>
+                        <a href="assets/LOGO (1024).png" download class="btn-download">Download PNG</a>
+                    </div>
+                </div>
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/LOGO (2048).png" alt="PNG Logo"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">Ultra-Res PNG</div>
+                        <div class="asset-meta">2048 x 2048 px</div>
+                        <a href="assets/LOGO (2048).png" download class="btn-download">Download PNG</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="colors">
+            <h2>Color Palette</h2>
+            <div class="color-grid">
+                <div>
+                    <div class="color-swatch" style="background: #0098EA;"></div>
+                    <strong>Electric Blue</strong><br>
+                    <span style="color: var(--gray); font-size: 0.9rem;">#0098EA</span>
+                </div>
+                <div>
+                    <div class="color-swatch" style="background: #0B0B0F;"></div>
+                    <strong>Midnight Black</strong><br>
+                    <span style="color: var(--gray); font-size: 0.9rem;">#0B0B0F</span>
+                </div>
+                <div>
+                    <div class="color-swatch" style="background: #FFFFFF; border: 1px solid var(--border);"></div>
+                    <strong>Pure White</strong><br>
+                    <span style="color: var(--gray); font-size: 0.9rem;">#FFFFFF</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="typography">
+            <h2>Typography</h2>
+            <div class="type-sample">
+                <h1 style="font-family: 'Inter', sans-serif;">Inter Display</h1>
+                <p>Primary typeface for English UI and Marketing.</p>
+            </div>
+            <div class="type-sample">
+                <h1 style="font-family: 'Vazirmatn', sans-serif;">Vazirmatn</h1>
+                <p>Primary typeface for Persian content.</p>
+            </div>
+        </section>
+
+        <section id="ios">
+            <h2>iOS App Icons</h2>
+            <p>Optimized assets for iPhone, iPad, and App Store submissions.</p>
+            <div class="asset-grid">
+                <!-- iOS Icons -->
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/icons/ios/icon-180.png" alt="iOS Icon 180x180"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">iPhone @3x</div>
+                        <div class="asset-meta">180 x 180 px</div>
+                        <a href="assets/icons/ios/icon-180.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/icons/ios/icon-167.png" alt="iOS Icon 167x167"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">iPad Pro</div>
+                        <div class="asset-meta">167 x 167 px</div>
+                        <a href="assets/icons/ios/icon-167.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/icons/ios/icon-152.png" alt="iOS Icon 152x152"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">iPad @2x</div>
+                        <div class="asset-meta">152 x 152 px</div>
+                        <a href="assets/icons/ios/icon-152.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/icons/ios/icon-120.png" alt="iOS Icon 120x120"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">iPhone @2x</div>
+                        <div class="asset-meta">120 x 120 px</div>
+                        <a href="assets/icons/ios/icon-120.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/icons/ios/icon-87.png" alt="iOS Icon 87x87"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">Settings @3x</div>
+                        <div class="asset-meta">87 x 87 px</div>
+                        <a href="assets/icons/ios/icon-87.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+                 <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/icons/ios/icon-60.png" alt="iOS Icon 60x60"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">iPhone @1x</div>
+                        <div class="asset-meta">60 x 60 px</div>
+                        <a href="assets/icons/ios/icon-60.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="android">
+            <h2>Android Icons</h2>
+            <p>Adaptive icons for Google Play and Android UI densities.</p>
+            <div class="asset-grid">
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/icons/android/icon-512.png" alt="Android Icon 512x512"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">Play Store</div>
+                        <div class="asset-meta">512 x 512 px</div>
+                        <a href="assets/icons/android/icon-512.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/icons/android/icon-192.png" alt="Android Icon 192x192"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">xxxhdpi</div>
+                        <div class="asset-meta">192 x 192 px</div>
+                        <a href="assets/icons/android/icon-192.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/icons/android/icon-144.png" alt="Android Icon 144x144"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">xxhdpi</div>
+                        <div class="asset-meta">144 x 144 px</div>
+                        <a href="assets/icons/android/icon-144.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/icons/android/icon-96.png" alt="Android Icon 96x96"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">xhdpi</div>
+                        <div class="asset-meta">96 x 96 px</div>
+                        <a href="assets/icons/android/icon-96.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/icons/android/icon-72.png" alt="Android Icon 72x72"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">hdpi</div>
+                        <div class="asset-meta">72 x 72 px</div>
+                        <a href="assets/icons/android/icon-72.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/icons/android/icon-48.png" alt="Android Icon 48x48"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">mdpi</div>
+                        <div class="asset-meta">48 x 48 px</div>
+                        <a href="assets/icons/android/icon-48.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="web">
+            <h2>Web & Windows</h2>
+            <p>Favicons, PWA icons, and Windows tiles.</p>
+            <div class="asset-grid">
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/icons/web/icon-310.png" alt="Web Icon 310x310"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">Windows Tile L</div>
+                        <div class="asset-meta">310 x 310 px</div>
+                        <a href="assets/icons/web/icon-310.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/icons/web/icon-256.png" alt="Web Icon 256x256"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">Desktop</div>
+                        <div class="asset-meta">256 x 256 px</div>
+                        <a href="assets/icons/web/icon-256.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/icons/web/icon-150.png" alt="Web Icon 150x150"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">Windows Tile M</div>
+                        <div class="asset-meta">150 x 150 px</div>
+                        <a href="assets/icons/web/icon-150.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/icons/web/icon-128.png" alt="Web Icon 128x128"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">Chrome Store</div>
+                        <div class="asset-meta">128 x 128 px</div>
+                        <a href="assets/icons/web/icon-128.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="social">
+            <h2>Social Media</h2>
+            <p>Ready-to-use assets for social profiles and sharing cards.</p>
+            <div class="asset-grid">
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/social/og-image-1200x630.png" alt="Open Graph Image" style="object-fit: cover; width: 100%; height: 100%; border-radius: 8px;"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">Open Graph</div>
+                        <div class="asset-meta">1200 x 630 px</div>
+                        <a href="assets/social/og-image-1200x630.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/social/og-image-1200x1200.png" alt="Social Square Image"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">Square Post</div>
+                        <div class="asset-meta">1200 x 1200 px</div>
+                        <a href="assets/social/og-image-1200x1200.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/social/twitter-image-600x600.png" alt="Twitter Card Image"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">Twitter Card</div>
+                        <div class="asset-meta">600 x 600 px</div>
+                        <a href="assets/social/twitter-image-600x600.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/social/facebook-share-1200x627.png" alt="Facebook Share Image" style="object-fit: cover; width: 100%; height: 100%; border-radius: 8px;"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">Facebook Share</div>
+                        <div class="asset-meta">1200 x 627 px</div>
+                        <a href="assets/social/facebook-share-1200x627.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="favicons">
+            <h2>Favicons</h2>
+            <p>Browser icons for all devices.</p>
+            <div class="asset-grid">
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/favicons/favicon.ico" alt="Favicon ICO"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">Favicon.ico</div>
+                        <div class="asset-meta">Multi-size</div>
+                        <a href="assets/favicons/favicon.ico" download class="btn-download">Download</a>
+                    </div>
+                </div>
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/favicons/favicon-64x64.png" alt="Favicon 64x64"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">PNG 64</div>
+                        <div class="asset-meta">64 x 64 px</div>
+                        <a href="assets/favicons/favicon-64x64.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/favicons/favicon-32x32.png" alt="Favicon 32x32"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">PNG 32</div>
+                        <div class="asset-meta">32 x 32 px</div>
+                        <a href="assets/favicons/favicon-32x32.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+                <div class="asset-card">
+                    <div class="asset-preview"><img src="assets/favicons/favicon-16x16.png" alt="Favicon 16x16"></div>
+                    <div class="asset-info">
+                        <div class="asset-name">PNG 16</div>
+                        <div class="asset-meta">16 x 16 px</div>
+                        <a href="assets/favicons/favicon-16x16.png" download class="btn-download">Download</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); color: var(--gray); font-size: 0.9rem;">
+            <p>© 2025 SBC. All rights reserved. <br>For internal and partner use only.</p>
+        </footer>
+    </main>
+</div>
+
+<script>
+    // Simple active state for sidebar navigation
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= (sectionTop - 150)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
